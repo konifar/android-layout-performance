@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">android-layout-performance</string>
+
+    <string name="mode_narrow_layout">Nallow Layout</string>
+    <string name="mode_shallow_layout">Shallow Layout</string>
+    <string name="mode_overdrawn_layout">Overdrawn Layout</string>
+
+</resources>

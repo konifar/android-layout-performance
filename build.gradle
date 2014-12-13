@@ -1,0 +1,16 @@
+buildscript {
+    repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.13.2'
+    }
+}
+
+allprojects {
+    repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
+        mavenCentral()
+    }
+}

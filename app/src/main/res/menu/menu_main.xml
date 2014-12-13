@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_shallow_layout"
+        android:orderInCategory="100"
+        android:title="@string/mode_shallow_layout"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_nallow_layout"
+        android:orderInCategory="100"
+        android:title="@string/mode_narrow_layout"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_overdrawn_layout"
+        android:orderInCategory="100"
+        android:title="@string/mode_overdrawn_layout"
+        app:showAsAction="never" />
+
+</menu>
