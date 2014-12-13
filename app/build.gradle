@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 21
@@ -41,4 +42,10 @@ dependencies {
     compile 'net.danlew:android.joda:2.3'
     compile 'de.greenrobot:eventbus:2.2.1'
     compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.1'
+    compile('com.crashlytics.sdk.android:crashlytics:2.1.0@aar') {
+        transitive = true;
+    }
+    compile('com.twitter.sdk.android:twitter:1.1.0@aar') {
+        transitive = true;
+    }
 }

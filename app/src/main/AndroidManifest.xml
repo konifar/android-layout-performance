@@ -12,6 +12,10 @@
         android:largeHeap="true"
         android:theme="@style/NoActionBarTheme">
 
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="07711d97ba834e6b88711a410b7df758f0873eac" />
+
         <activity
             android:name="com.konifar.android_layout_performance.MainActivity"
             android:label="@string/app_name">
