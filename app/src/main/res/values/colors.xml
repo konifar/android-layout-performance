@@ -5,10 +5,13 @@
     <color name="cyan500">#00BCD4</color>
     <color name="cyan600">#00ACC1</color>
     <color name="cyan900">#006064</color>
+
     <color name="grey300">#E0E0E0</color>
     <color name="grey600">#757575</color>
+
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
     <color name="feedback">#33000000</color>
+    <color name="error">#F44336</color>
 </resources>

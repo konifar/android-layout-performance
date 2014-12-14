@@ -55,7 +55,7 @@ public class TweetModel {
     public interface HomeTimelineCallback {
         public void success(List<Tweet> tweets);
 
-        public void failure(Exception e);
+        public void failure(TwitterException e);
 
         public void complete();
     }

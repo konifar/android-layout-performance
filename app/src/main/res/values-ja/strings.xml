@@ -3,6 +3,7 @@
 
     <string name="app_name">Android Layout Performance</string>
     <string name="logout">ログアウト</string>
+    <string name="error_occured">エラーが発生しました。\n%1$s</string>
 
     <string name="mode_narrow_layout">Nallow Layout</string>
     <string name="mode_shallow_layout">Shallow Layout</string>

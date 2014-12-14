@@ -8,11 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.konifar.android_layout_performance.R;
 import com.konifar.android_layout_performance.models.TweetModel;
 import com.konifar.android_layout_performance.views.adapters.TweetAdapter;
 import com.konifar.android_layout_performance.views.listeners.EndlessScrollListener;
+import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.models.Tweet;
 
 import java.util.List;
@@ -30,6 +32,8 @@ public abstract class AbstractHomeTimelineFragment extends Fragment {
     ListView mListview;
     @InjectView(R.id.loading)
     View mLoading;
+    @InjectView(R.id.txt_error)
+    TextView mTxtError;
 
     private TweetAdapter adapter;
 
@@ -85,12 +89,15 @@ public abstract class AbstractHomeTimelineFragment extends Fragment {
             }
 
             @Override
-            public void failure(Exception e) {
+            public void failure(TwitterException e) {
                 Log.e(TAG, e.getMessage());
+                mTxtError.setVisibility(View.VISIBLE);
+                mTxtError.setText(getString(R.string.error_occured, e.getLocalizedMessage()));
             }
 
             @Override
             public void complete() {
+                if (mTxtError != null) mTxtError.setVisibility(View.GONE);
                 if (mLoading != null) mLoading.setVisibility(View.GONE);
 
                 if (mSwipeRefresh != null && mSwipeRefresh.isRefreshing()) {
