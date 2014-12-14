@@ -42,16 +42,17 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.inject(this);
 
+        setSupportActionBar(mToolbar);
+
         if (Twitter.getSessionManager().getActiveSession() == null) {
             LoginActivity.start(this);
+            finish();
+        } else {
+            if (savedInstanceState == null) {
+                changeToolbarSubTitle(R.string.mode_shallow_layout);
+                showFragment(new HomeTimelineShallowFragment());
+            }
         }
-
-        if (savedInstanceState == null) {
-            changeToolbarSubTitle(R.string.mode_shallow_layout);
-            showFragment(new HomeTimelineShallowFragment());
-        }
-
-        setSupportActionBar(mToolbar);
     }
 
     private void showFragment(Fragment fragment) {

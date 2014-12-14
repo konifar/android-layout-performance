@@ -10,6 +10,7 @@ import com.konifar.android_layout_performance.events.LoginSuccessEvent;
 import com.konifar.android_layout_performance.fragments.LoginFragment;
 
 import butterknife.ButterKnife;
+import de.greenrobot.event.EventBus;
 
 public class LoginActivity extends FragmentActivity {
 
@@ -21,6 +22,7 @@ public class LoginActivity extends FragmentActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EventBus.getDefault().register(this);
 
         setContentView(R.layout.activity_login);
         ButterKnife.inject(this);
@@ -30,6 +32,12 @@ public class LoginActivity extends FragmentActivity {
                     .add(R.id.container, new LoginFragment(), LoginFragment.class.getSimpleName())
                     .commit();
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 
     @Override
