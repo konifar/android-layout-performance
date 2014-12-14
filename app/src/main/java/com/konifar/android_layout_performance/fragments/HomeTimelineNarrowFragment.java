@@ -8,4 +8,9 @@ public final class HomeTimelineNarrowFragment extends AbstractHomeTimelineFragme
         return R.layout.item_tweet_narrow;
     }
 
+    @Override
+    int getLayoutResId() {
+        return R.layout.fragment_home_timeline_narrow;
+    }
+
 }

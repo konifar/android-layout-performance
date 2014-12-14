@@ -11,6 +11,7 @@ import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
 import com.konifar.android_layout_performance.fragments.HomeTimelineNarrowFragment;
+import com.konifar.android_layout_performance.fragments.HomeTimelineNarrowOverDrawnFragment;
 import com.konifar.android_layout_performance.fragments.HomeTimelineShallowFragment;
 import com.konifar.android_layout_performance.fragments.LoginFragment;
 import com.twitter.sdk.android.Twitter;
@@ -83,7 +84,8 @@ public class MainActivity extends ActionBarActivity {
                 showFragment(new HomeTimelineNarrowFragment());
                 break;
             case R.id.action_overdrawn_layout:
-                // TODO implement
+                changeToolbarSubTitle(R.string.mode_overdrawn_layout);
+                showFragment(new HomeTimelineNarrowOverDrawnFragment());
                 break;
             case R.id.action_logout:
                 Twitter.logOut();

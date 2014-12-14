@@ -6,7 +6,7 @@
 
     <string name="mode_narrow_layout">Nallow Layout</string>
     <string name="mode_shallow_layout">Shallow Layout</string>
-    <string name="mode_overdrawn_layout">Overdrawn Layout</string>
+    <string name="mode_overdrawn_layout">Nallow and Overdrawn Layout</string>
 
     <string name="retweeted_msg">%1$s retweeted</string>
 
