@@ -2,12 +2,12 @@
 <resources>
 
     <string name="app_name">Android Layout Performance</string>
-    <string name="logout">Logout</string>
+    <string name="logout">ログアウト</string>
 
     <string name="mode_narrow_layout">Nallow Layout</string>
     <string name="mode_shallow_layout">Shallow Layout</string>
     <string name="mode_overdrawn_layout">Overdrawn Layout</string>
 
-    <string name="retweeted_msg">%1$s retweeted</string>
+    <string name="retweeted_msg">%1$sさんがリツイートしました</string>
 
 </resources>
