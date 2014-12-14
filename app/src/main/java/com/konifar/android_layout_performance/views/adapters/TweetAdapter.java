@@ -83,9 +83,14 @@ public class TweetAdapter extends ArrayAdapter<Tweet> {
 
         if (tweet.retweetCount > 0) {
             holder.mTxtRetweet.setText(String.valueOf(tweet.retweetCount));
+        } else {
+            holder.mTxtRetweet.setText("");
         }
+
         if (tweet.favoriteCount > 0) {
             holder.mTxtFavorite.setText(String.valueOf(tweet.favoriteCount));
+        } else {
+            holder.mTxtFavorite.setText("");
         }
     }
 

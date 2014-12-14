@@ -29,14 +29,14 @@ public class TweetModel {
         return instance;
     }
 
-    public void getHomeTimeline(long sinceId, final HomeTimelineCallback cb) {
-        getHomeTimeline(COUNT, sinceId, cb);
+    public void getHomeTimeline(Long lastId, final HomeTimelineCallback cb) {
+        getHomeTimeline(COUNT, lastId, cb);
     }
 
-    public void getHomeTimeline(int count, long sinceId, final HomeTimelineCallback cb) {
+    public void getHomeTimeline(int count, Long lastId, final HomeTimelineCallback cb) {
         TwitterApiClient client = TwitterCore.getInstance().getApiClient();
         StatusesService service = client.getStatusesService();
-        service.homeTimeline(count, sinceId, null, false, false, true, true,
+        service.homeTimeline(count, null, lastId, false, false, true, true,
                 new Callback<List<Tweet>>() {
                     @Override
                     public void success(Result<List<Tweet>> listResult) {

@@ -51,7 +51,7 @@ public class HomeTimelineFragment extends Fragment {
     }
 
     private void loadData() {
-        TweetModel.getInstance().getHomeTimeline(getSinceId(), new TweetModel.HomeTimelineCallback() {
+        TweetModel.getInstance().getHomeTimeline(getLastId(), new TweetModel.HomeTimelineCallback() {
             @Override
             public void success(List<Tweet> tweets) {
                 adapter.addAll(tweets);
@@ -64,9 +64,9 @@ public class HomeTimelineFragment extends Fragment {
         });
     }
 
-    private long getSinceId() {
+    private Long getLastId() {
         if (adapter.isEmpty()) {
-            return 1L;
+            return null;
         } else {
             return adapter.getItem(adapter.getCount() - 1).id;
         }
