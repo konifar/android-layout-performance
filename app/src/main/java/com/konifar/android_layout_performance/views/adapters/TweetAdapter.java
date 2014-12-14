@@ -1,6 +1,7 @@
 package com.konifar.android_layout_performance.views.adapters;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.Html;
 import android.text.util.Linkify;
 import android.view.LayoutInflater;
@@ -102,6 +103,16 @@ public class TweetAdapter extends ArrayAdapter<Tweet> {
         ImageLoader.getInstance().displayImage(user.profileImageUrl, holder.mImgUser);
         holder.mTxtUserScreenName.setText(TweetModel.PREFIX_SCREEN_NAME + user.screenName);
         holder.mTxtUserName.setText(user.name);
+    }
+
+    public void addAll(List<Tweet> tweets) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            super.addAll(tweets);
+        } else {
+            for (Tweet tweet : tweets) {
+                add(tweet);
+            }
+        }
     }
 
     static class ViewHolder {
