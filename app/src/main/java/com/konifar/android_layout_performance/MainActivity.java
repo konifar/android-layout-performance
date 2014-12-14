@@ -56,7 +56,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, fragment, ((Object) fragment).getClass().getSimpleName())
+                .replace(R.id.container, fragment, ((Object) fragment).getClass().getSimpleName())
                 .commit();
     }
 

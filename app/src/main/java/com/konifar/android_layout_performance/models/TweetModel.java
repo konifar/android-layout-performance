@@ -40,11 +40,13 @@ public class TweetModel {
                 new Callback<List<Tweet>>() {
                     @Override
                     public void success(Result<List<Tweet>> listResult) {
+                        cb.complete();
                         cb.success(listResult.data);
                     }
 
                     @Override
                     public void failure(TwitterException e) {
+                        cb.complete();
                         cb.failure(e);
                     }
                 });
@@ -54,6 +56,8 @@ public class TweetModel {
         public void success(List<Tweet> tweets);
 
         public void failure(Exception e);
+
+        public void complete();
     }
 
 }

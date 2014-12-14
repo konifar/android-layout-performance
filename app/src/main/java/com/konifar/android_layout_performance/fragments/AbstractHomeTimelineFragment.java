@@ -28,6 +28,8 @@ public abstract class AbstractHomeTimelineFragment extends Fragment {
     SwipeRefreshLayout mSwipeRefresh;
     @InjectView(R.id.listview)
     ListView mListview;
+    @InjectView(R.id.loading)
+    View mLoading;
 
     private TweetAdapter adapter;
 
@@ -66,9 +68,14 @@ public abstract class AbstractHomeTimelineFragment extends Fragment {
     }
 
     private void loadData() {
-        TweetModel.getInstance().getHomeTimeline(getLastId(), new TweetModel.HomeTimelineCallback() {
+        final Long lastId = getLastId();
+        if (lastId == null) mLoading.setVisibility(View.VISIBLE);
+
+        TweetModel.getInstance().getHomeTimeline(lastId, new TweetModel.HomeTimelineCallback() {
             @Override
             public void success(List<Tweet> tweets) {
+                if (mLoading != null) mLoading.setVisibility(View.GONE);
+
                 if (mSwipeRefresh != null && mSwipeRefresh.isRefreshing()) {
                     mSwipeRefresh.setRefreshing(false);
                     adapter.clear();
@@ -79,11 +86,16 @@ public abstract class AbstractHomeTimelineFragment extends Fragment {
 
             @Override
             public void failure(Exception e) {
+                Log.e(TAG, e.getMessage());
+            }
+
+            @Override
+            public void complete() {
+                if (mLoading != null) mLoading.setVisibility(View.GONE);
+
                 if (mSwipeRefresh != null && mSwipeRefresh.isRefreshing()) {
                     mSwipeRefresh.setRefreshing(false);
                 }
-
-                Log.e(TAG, e.getMessage());
             }
         });
     }

@@ -1,16 +1,25 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/swipe_refresh"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <ListView
-        android:id="@+id/listview"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white"
-        android:divider="@color/grey300"
-        android:dividerHeight="@dimen/line_small"
-        android:listSelector="@drawable/bg_feedback"
-        android:scrollingCache="false" />
+        android:layout_height="wrap_content">
 
-</android.support.v4.widget.SwipeRefreshLayout>
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/grey300"
+            android:dividerHeight="@dimen/line_small"
+            android:listSelector="@drawable/bg_feedback"
+            android:scrollingCache="false" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <include
+        android:id="@+id/loading"
+        layout="@layout/part_loading" />
+
+</RelativeLayout>
