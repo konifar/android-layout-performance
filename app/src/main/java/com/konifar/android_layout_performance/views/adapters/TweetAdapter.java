@@ -26,8 +26,11 @@ import butterknife.InjectView;
 
 public class TweetAdapter extends ArrayAdapter<Tweet> {
 
-    public TweetAdapter(Context context) {
-        super(context, R.layout.item_tweet);
+    private final int layoutResId;
+
+    public TweetAdapter(Context context, int layoutResId) {
+        super(context, layoutResId);
+        this.layoutResId = layoutResId;
     }
 
     @Override
@@ -36,7 +39,7 @@ public class TweetAdapter extends ArrayAdapter<Tweet> {
         Tweet tweet = getItem(pos);
 
         if (view == null || view.getTag() == null) {
-            view = LayoutInflater.from(getContext()).inflate(R.layout.item_tweet, parent, false);
+            view = LayoutInflater.from(getContext()).inflate(layoutResId, parent, false);
             holder = new ViewHolder(view);
         } else {
             holder = (ViewHolder) view.getTag();

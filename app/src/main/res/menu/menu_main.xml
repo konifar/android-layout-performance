@@ -8,7 +8,7 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_nallow_layout"
+        android:id="@+id/action_narrow_layout"
         android:orderInCategory="100"
         android:title="@string/mode_narrow_layout"
         app:showAsAction="never" />

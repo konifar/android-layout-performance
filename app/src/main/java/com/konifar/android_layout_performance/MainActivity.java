@@ -10,7 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.crashlytics.android.Crashlytics;
-import com.konifar.android_layout_performance.fragments.HomeTimelineFragment;
+import com.konifar.android_layout_performance.fragments.HomeTimelineNarrowFragment;
+import com.konifar.android_layout_performance.fragments.HomeTimelineShallowFragment;
 import com.konifar.android_layout_performance.fragments.LoginFragment;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -45,16 +46,21 @@ public class MainActivity extends ActionBarActivity {
         }
 
         if (savedInstanceState == null) {
-            showFragment(new HomeTimelineFragment(), HomeTimelineFragment.class.getSimpleName());
+            changeToolbarSubTitle(R.string.mode_shallow_layout);
+            showFragment(new HomeTimelineShallowFragment());
         }
 
         setSupportActionBar(mToolbar);
     }
 
-    private void showFragment(Fragment fragment, String tag) {
+    private void showFragment(Fragment fragment) {
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, fragment, tag)
+                .add(R.id.container, fragment, ((Object) fragment).getClass().getSimpleName())
                 .commit();
+    }
+
+    private void changeToolbarSubTitle(int stringResId) {
+        mToolbar.setSubtitle(stringResId);
     }
 
     @Override
@@ -69,10 +75,15 @@ public class MainActivity extends ActionBarActivity {
 
         switch (id) {
             case R.id.action_shallow_layout:
+                changeToolbarSubTitle(R.string.mode_shallow_layout);
+                showFragment(new HomeTimelineShallowFragment());
                 break;
-            case R.id.action_nallow_layout:
+            case R.id.action_narrow_layout:
+                changeToolbarSubTitle(R.string.mode_narrow_layout);
+                showFragment(new HomeTimelineNarrowFragment());
                 break;
             case R.id.action_overdrawn_layout:
+                // TODO implement
                 break;
             case R.id.action_logout:
                 Twitter.logOut();

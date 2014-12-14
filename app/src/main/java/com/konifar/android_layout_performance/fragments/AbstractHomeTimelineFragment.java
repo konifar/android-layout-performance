@@ -20,9 +20,9 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class HomeTimelineFragment extends Fragment {
+public abstract class AbstractHomeTimelineFragment extends Fragment {
 
-    private static final String TAG = HomeTimelineFragment.class.getSimpleName();
+    private static final String TAG = AbstractHomeTimelineFragment.class.getSimpleName();
 
     @InjectView(R.id.swipe_refresh)
     SwipeRefreshLayout mSwipeRefresh;
@@ -55,7 +55,7 @@ public class HomeTimelineFragment extends Fragment {
     }
 
     private void initListView() {
-        adapter = new TweetAdapter(getActivity());
+        adapter = new TweetAdapter(getActivity(), getTweetLayoutResId());
         mListview.setAdapter(adapter);
         mListview.setOnScrollListener(new EndlessScrollListener() {
             @Override
@@ -95,5 +95,7 @@ public class HomeTimelineFragment extends Fragment {
             return adapter.getItem(adapter.getCount() - 1).id;
         }
     }
+
+    abstract int getTweetLayoutResId();
 
 }
