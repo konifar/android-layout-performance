@@ -2,128 +2,143 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="@dimen/spacing_large">
-
-    <TextView
-        android:id="@+id/txt_retweeted_msg"
-        style="@style/TextSub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing"
-        android:layout_marginLeft="42dp"
-        android:layout_marginStart="42dp"
-        android:drawableLeft="@drawable/ic_repeat_grey600_18dp"
-        android:drawablePadding="@dimen/spacing_large"
-        android:drawableStart="@drawable/ic_repeat_grey600_18dp"
-        android:visibility="gone" />
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_large"
+        android:orientation="vertical">
 
-        <FrameLayout
-            android:id="@+id/feedback_img_user"
-            style="@style/TapFeedback"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/txt_retweeted_msg"
+            style="@style/TextSub"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/spacing_large"
-            android:layout_marginRight="@dimen/spacing_large">
-
-            <ImageView
-                android:id="@+id/img_user"
-                style="@style/UserImage" />
-        </FrameLayout>
+            android:layout_marginBottom="@dimen/spacing"
+            android:layout_marginLeft="42dp"
+            android:layout_marginStart="42dp"
+            android:drawableLeft="@drawable/ic_repeat_grey600_18dp"
+            android:drawablePadding="@dimen/spacing_large"
+            android:drawableStart="@drawable/ic_repeat_grey600_18dp"
+            android:visibility="gone" />
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/feedback_img_user"
+                style="@style/TapFeedback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:layout_marginRight="@dimen/spacing_large">
+
+                <ImageView
+                    android:id="@+id/img_user"
+                    style="@style/UserImage" />
+            </FrameLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="-4dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/container_user_name"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <TextView
-                        android:id="@+id/txt_user_name"
-                        style="@style/TextUserName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                    <LinearLayout
+                        android:id="@+id/container_user_name"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/txt_user_name"
+                            style="@style/TextUserName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/spacing_small"
+                            android:paddingStart="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/txt_user_screen_name"
+                                style="@style/TextSub"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical" />
+                        </FrameLayout>
+
+                    </LinearLayout>
 
                     <TextView
-                        android:id="@+id/txt_user_screen_name"
+                        android:id="@+id/txt_date"
                         style="@style/TextSub"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="end|center_vertical"
                         android:layout_marginLeft="@dimen/spacing_small"
                         android:layout_marginStart="@dimen/spacing_small" />
-
                 </LinearLayout>
 
                 <TextView
-                    android:id="@+id/txt_date"
-                    style="@style/TextSub"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/txt_tweet"
+                    style="@style/TextContent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.twitter.sdk.android.tweetui.internal.util.AspectRatioImageView
+                    android:id="@+id/img_tweet_media"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="end|center_vertical"
-                    android:layout_marginLeft="@dimen/spacing_small"
-                    android:layout_marginStart="@dimen/spacing_small" />
-            </LinearLayout>
+                    android:layout_marginTop="@dimen/spacing"
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
 
-            <TextView
-                android:id="@+id/txt_tweet"
-                style="@style/TextContent"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <com.twitter.sdk.android.tweetui.internal.util.AspectRatioImageView
-                android:id="@+id/img_tweet_media"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing"
-                android:scaleType="centerCrop"
-                android:visibility="gone" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/txt_reply"
-                    style="@style/TextSub.Action"
-                    android:drawableLeft="@drawable/ic_reply_grey600_18dp"
-                    android:drawableStart="@drawable/ic_reply_grey600_18dp" />
-
-                <TextView
-                    android:id="@+id/txt_retweet"
-                    style="@style/TextSub.Action"
-                    android:drawableLeft="@drawable/ic_repeat_grey600_18dp"
-                    android:drawableStart="@drawable/ic_repeat_grey600_18dp" />
-
-                <TextView
-                    android:id="@+id/txt_favorite"
-                    style="@style/TextSub.Action"
-                    android:drawableLeft="@drawable/ic_grade_grey600_18dp"
-                    android:drawableStart="@drawable/ic_grade_grey600_18dp" />
-
-                <ImageView
-                    android:id="@+id/img_follow"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/ic_person_add_grey600_18dp" />
+                    android:layout_marginTop="@dimen/spacing_large"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/txt_reply"
+                        style="@style/TextSub.Action"
+                        android:drawableLeft="@drawable/ic_reply_grey600_18dp"
+                        android:drawableStart="@drawable/ic_reply_grey600_18dp" />
+
+                    <TextView
+                        android:id="@+id/txt_retweet"
+                        style="@style/TextSub.Action"
+                        android:drawableLeft="@drawable/ic_repeat_grey600_18dp"
+                        android:drawableStart="@drawable/ic_repeat_grey600_18dp" />
+
+                    <TextView
+                        android:id="@+id/txt_favorite"
+                        style="@style/TextSub.Action"
+                        android:drawableLeft="@drawable/ic_grade_grey600_18dp"
+                        android:drawableStart="@drawable/ic_grade_grey600_18dp" />
+
+                    <ImageView
+                        android:id="@+id/img_follow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_person_add_grey600_18dp" />
+
+                </LinearLayout>
 
             </LinearLayout>
 

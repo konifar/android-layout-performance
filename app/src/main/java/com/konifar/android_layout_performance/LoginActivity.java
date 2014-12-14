@@ -47,9 +47,4 @@ public class LoginActivity extends FragmentActivity {
         finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        moveTaskToBack(true);
-    }
-
 }
