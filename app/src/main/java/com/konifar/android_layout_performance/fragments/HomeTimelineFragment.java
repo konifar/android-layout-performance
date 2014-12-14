@@ -2,6 +2,7 @@ package com.konifar.android_layout_performance.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ public class HomeTimelineFragment extends Fragment {
 
     private static final String TAG = HomeTimelineFragment.class.getSimpleName();
 
+    @InjectView(R.id.swipe_refresh)
+    SwipeRefreshLayout mSwipeRefresh;
     @InjectView(R.id.listview)
     ListView mListview;
 
@@ -33,10 +36,22 @@ public class HomeTimelineFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_timeline, container, false);
         ButterKnife.inject(this, view);
 
+        initSwipeRefresh();
         initListView();
         loadData();
 
         return view;
+    }
+
+    private void initSwipeRefresh() {
+        mSwipeRefresh.setColorSchemeResources(R.color.cyan300, R.color.cyan600, R.color.cyan900);
+        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter.clear();
+                loadData();
+            }
+        });
     }
 
     private void initListView() {
@@ -54,18 +69,27 @@ public class HomeTimelineFragment extends Fragment {
         TweetModel.getInstance().getHomeTimeline(getLastId(), new TweetModel.HomeTimelineCallback() {
             @Override
             public void success(List<Tweet> tweets) {
+                if (mSwipeRefresh != null && mSwipeRefresh.isRefreshing()) {
+                    mSwipeRefresh.setRefreshing(false);
+                    adapter.clear();
+                }
+
                 adapter.addAll(tweets);
             }
 
             @Override
             public void failure(Exception e) {
+                if (mSwipeRefresh != null && mSwipeRefresh.isRefreshing()) {
+                    mSwipeRefresh.setRefreshing(false);
+                }
+
                 Log.e(TAG, e.getMessage());
             }
         });
     }
 
     private Long getLastId() {
-        if (adapter.isEmpty()) {
+        if (mSwipeRefresh.isRefreshing() || adapter.isEmpty()) {
             return null;
         } else {
             return adapter.getItem(adapter.getCount() - 1).id;

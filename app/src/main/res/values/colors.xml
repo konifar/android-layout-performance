@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="cyan50">#E0F7FA</color>
+    <color name="cyan300">#4DD0E1</color>
     <color name="cyan500">#00BCD4</color>
     <color name="cyan600">#00ACC1</color>
+    <color name="cyan900">#006064</color>
     <color name="grey300">#E0E0E0</color>
     <color name="grey600">#757575</color>
     <color name="black">#000000</color>
