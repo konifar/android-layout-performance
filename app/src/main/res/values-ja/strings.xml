@@ -5,9 +5,9 @@
     <string name="logout">ログアウト</string>
     <string name="error_occured">エラーが発生しました。\n%1$s</string>
 
-    <string name="mode_narrow_layout">Nallow Layout</string>
-    <string name="mode_shallow_layout">Shallow Layout</string>
-    <string name="mode_overdrawn_layout">Overdrawn Layout</string>
+    <string name="mode_narrow_layout">深いレイアウト</string>
+    <string name="mode_shallow_layout">浅いレイアウト</string>
+    <string name="mode_overdrawn_layout">深くて描画の多いレイアウト</string>
 
     <string name="retweeted_msg">%1$sさんがリツイートしました</string>
 
